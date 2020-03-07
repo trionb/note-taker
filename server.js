@@ -31,15 +31,15 @@ app.get("/notes", function (req, res) {
 
 // //read db.json file and return saved notes as JSON
 app.get("/api/notes", function (req, res) {
-
+    newId = db.length + 1
     return res.json(db);
 })
 
 //receive a new note and return new note to the client
 app.post("/api/notes", function (req, res) {
     db.push(req.body)
-    //req.body.id = db.length
-    newId = db.length + 1
+    req.body.id = db.length
+    
     // console.log(newId)
     return res.json(db);
 })
